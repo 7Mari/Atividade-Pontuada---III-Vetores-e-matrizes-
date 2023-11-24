@@ -6,16 +6,16 @@
 int main(){
     setlocale(LC_ALL ,"portuguese");
 
-    char nome[3][200];
-    int idade[3];
-    float peso[3];
-    float altura[3];
+    char nome[5][200];
+    int idade[6];
+    float peso[6];
+    float altura[6];
     int idadeMaior = 0, idadeMenor = 9999;
     float pesoBaixo = 9999 ,pesoAlto = 0 ,alturaBaixa = 9999,alturaAlta = 0;
 
     int i;
 
-    for ( i = 1; i <= 3; i++)
+    for ( i = 1; i <= 5; i++)
     {
         printf("Digite seu nome: \n");
         gets(nome[i]);
@@ -47,7 +47,7 @@ int main(){
 
     //exibindo
 
-    for ( i = 1; i <= 3; i++)
+    for ( i = 1; i <= 5; i++)
     {
         printf("%dº Nome: %s \n" ,i ,nome[i]);
 
@@ -59,26 +59,26 @@ int main(){
 
     }
 
-    for ( i = 1; i <= 3; i++)
+    for ( i = 1; i <= 5; i++)
     {
          if (peso[i] == pesoAlto)
         {
             printf("\nNome da pessoa com mais peso: -%s- \n" ,nome[i]);
-            printf("Maior Peso: %.1f \n" ,pesoAlto);
+            printf("Maior Peso: %.1f kg \n" ,pesoAlto);
         } else if(peso[i] == pesoBaixo) {
             printf("\nNome da pessoa com menos peso: -%s- \n" ,nome[i]);
-            printf("Menor Peso: %.1f \n" ,pesoBaixo);
+            printf("Menor Peso: %.1f kg \n" ,pesoBaixo);
         }
 
         if (altura[i] == alturaAlta)
         {
-            printf("\nNome da pessoa mais alta: -%s- \n" ,nome[i]);
-            printf("Maior Altura: %.1f \n" ,alturaAlta);
+            printf("\nNome da pessoa mais alta: -%s- \n " ,nome[i]);
+            printf("Maior Altura: %.2f cm \n" ,alturaAlta);
         }
         else if(altura[i] == alturaBaixa)
         {
             printf("\nNome da pessoa mais baixa: -%s- \n" ,nome[i]);
-            printf("Menor Altura: %.1f \n" ,alturaBaixa); 
+            printf("Menor Altura: %.2f cm \n" ,alturaBaixa); 
         }
 
         if (idade[i] == idadeMaior)
@@ -88,7 +88,7 @@ int main(){
         }
         else if (idade[i] == idadeMenor)
         {
-            printf("\nNome da pessoa com menos idade: -%s- \n" ,nome[i]);
+            printf("\nNome da pessoa com menos idade: -%s- \n " ,nome[i]);
             printf("Menor Idade: %d \n" ,idadeMenor);
         }
         
