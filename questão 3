@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+
+int main()
+{
+	setlocale(LC_ALL, "portuguese");
+
+	int i;
+	int numero[200];
+	char nome[200][200];
+	int codigo;
+	int contador = 0;
+
+	do 
+	{
+	printf("Escolha um dos Códigos abaixo: \n");
+	printf("-1- Adicionar um Número \n");
+	printf("-2- Exibir Números Telefônicos Cadastrados e Encerrar \n");
+	scanf("%d", &codigo);
+	
+	switch (codigo)
+	{
+	case 1:
+
+		fflush(stdin);
+		
+		printf("Informe seu Nome: \n");
+		gets (nome[contador]);
+
+		printf("Digite seu Número: \n");
+		scanf("%d", &numero[contador]);
+		contador++;
+
+		system("cls || clear");
+
+		break;
+
+	case 2:
+
+		printf("Números Cadastrados: \n");
+		for (i = 0; i < contador; i++)
+		{
+			printf ("-------------------------\n");
+			printf("Nome: %s \n", nome[i]);
+			printf ("Número de Telefone: %d \n", numero[i]);
+			
+			printf (" \n");
+		}
+		break;
+		
+	default:
+		printf("Opção Inválida! \n");
+		break;
+	}
+	
+	} while (codigo != 2);
+		
+	return 0;
+}
