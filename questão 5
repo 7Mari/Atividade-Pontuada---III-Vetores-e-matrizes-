@@ -1,0 +1,62 @@
+#include <locale.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+    setlocale(LC_ALL, "portuguese");
+
+    int codigo;
+    int produto;
+    int soma = 0;
+    int valor = 0;
+
+    do
+    {
+        printf("--MENU-- \n\n");
+        printf("Produtos: \n");
+        printf("(1) Creme = R$30,00\n", 1);
+        printf("(2) Sabonete = R$8,00\n", 2);
+        printf("(3) Escova = R$12,00\n", 3);
+        printf("--------------------------- \n");
+        printf("(1) Adicionar uma venda\n");
+        printf("(2) Sair do menu e exibir o total das vendas\n");
+        printf("Digite um código: \n");
+        scanf("%d", &codigo);
+        switch (codigo)
+        {
+        case 1:
+            printf("Informe o produto desejado: \n");
+            scanf("%d", &produto);
+
+
+            if (produto == 1)
+            {
+                produto = 30;
+            }
+            else if (produto == 2)
+            {
+                produto = 8;
+            }
+            else if (produto == 3)
+            {
+                produto = 12;
+            }
+            soma += produto;
+
+            break;
+        
+        case 2:
+            valor = soma;
+            printf("Valor Total das Vendas: R$ %d  \n" ,valor);
+            break;
+
+        default:
+            printf("Opção Inválida!");
+            break;
+        }
+    } while (codigo != 2);
+
+    return 0;
+}
