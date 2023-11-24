@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <string.h>
+
+int main(){
+    setlocale(LC_ALL ,"portuguese");
+
+    char nome[3][200];
+    int idade[3];
+    float peso[3];
+    float altura[3];
+    int idadeMaior = 0, idadeMenor = 9999;
+    float pesoBaixo = 9999 ,pesoAlto = 0 ,alturaBaixa = 9999,alturaAlta = 0;
+
+    int i;
+
+    for ( i = 1; i <= 3; i++)
+    {
+        printf("Digite seu nome: \n");
+        gets(nome[i]);
+
+            printf("Digite sua idade: \n");
+            scanf("%d" ,&idade[i]);
+
+            printf("Digite seu peso: \n");
+            scanf("%f" ,&peso[i]);
+
+            printf("Digite sua altura: \n");
+            scanf("%f" ,&altura[i]);
+
+            printf("\n \n");
+
+        pesoAlto = pesoAlto > peso[i] ? pesoAlto : peso[i];
+        pesoBaixo = pesoBaixo < peso[i] ? pesoBaixo : peso[i];
+
+        alturaAlta = alturaAlta > altura[i] ? alturaAlta : altura[i];
+        alturaBaixa = alturaBaixa < altura[i] ? alturaBaixa : altura[i];
+
+        idadeMaior = idadeMaior > idade[i] ? idadeMaior : idade[i];
+        idadeMenor = idadeMenor < idade[i] ? idadeMenor : idade[i];
+
+        fflush(stdin);
+        
+    }
+    system("cls || clear");
+
+    //exibindo
+
+    for ( i = 1; i <= 3; i++)
+    {
+        printf("%dº Nome: %s \n" ,i ,nome[i]);
+
+        printf("%dº idade: %d\n" ,i ,idade[i]);
+
+        printf("%dº informação do peso: %.2f \n" ,i ,peso[i]);
+        
+        printf("%dº informação da altura: %.2f\n\n" ,i ,altura[i]);
+
+    }
+
+    for ( i = 1; i <= 3; i++)
+    {
+         if (peso[i] == pesoAlto)
+        {
+            printf("\nNome da pessoa com mais peso: -%s- \n" ,nome[i]);
+            printf("Maior Peso: %.1f \n" ,pesoAlto);
+        } else if(peso[i] == pesoBaixo) {
+            printf("\nNome da pessoa com menos peso: -%s- \n" ,nome[i]);
+            printf("Menor Peso: %.1f \n" ,pesoBaixo);
+        }
+
+        if (altura[i] == alturaAlta)
+        {
+            printf("\nNome da pessoa mais alta: -%s- \n" ,nome[i]);
+            printf("Maior Altura: %.1f \n" ,alturaAlta);
+        }
+        else if(altura[i] == alturaBaixa)
+        {
+            printf("\nNome da pessoa mais baixa: -%s- \n" ,nome[i]);
+            printf("Menor Altura: %.1f \n" ,alturaBaixa); 
+        }
+
+        if (idade[i] == idadeMaior)
+        {
+            printf("\nNome da pessoa com mais idade: -%s- \n" ,nome[i]);
+            printf("Maior Idade: %d \n" ,idadeMaior);
+        }
+        else if (idade[i] == idadeMenor)
+        {
+            printf("\nNome da pessoa com menos idade: -%s- \n" ,nome[i]);
+            printf("Menor Idade: %d \n" ,idadeMenor);
+        }
+        
+    }
+    
+    return 0;
+}
