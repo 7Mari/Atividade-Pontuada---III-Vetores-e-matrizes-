@@ -1,65 +1,75 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-#include <string.h>
 
-int main(){
-    setlocale(LC_ALL ,"portuguese");
+int main()
+{
+    setlocale(LC_ALL, "portuguese");
 
-    int numeros[5];
-    int i;
-    int pares = 0 ,impares = 0 ,negativos, maior = 0 ,menor = 9999;
-    float mediaPar = 0, mediaGeral = 0;
-    int somaPar = 0 ,somaGeral = 0;
+    int i, j;
+    char nome[5][200];
+    int idade[5];
+    float nota[5][3];
+    float soma;
+    float media[3];
 
-    for ( i = 0; i < 5; i++)
+    for (i = 0; i < 5; i++)
     {
-        printf("Digite o %dº número: \n" ,i + 1);
-        scanf("%d" ,&numeros[i]);
+        printf("Insira seu nome:");
+        gets(nome[i]);
 
+        printf("Insira sua idade:");
+        scanf("%d", &idade[i]);
 
-        if (numeros[i] % 2 == 0)
+        for (j = 0; j < 3; j++)
         {
-            pares++;
-            somaPar += pares;
-        } else {
-            impares++;
-        }
+            printf("Insira sua nota: \n");
+            scanf("%f", &nota[i][j]);
 
-        if (numeros[i] < 0)
-        {
-            negativos++;
+            soma += nota[i][j];
         }
-
-        maior = maior > numeros[i] ? maior : numeros[i];
-        menor = menor < numeros[i] ? menor : numeros[i];
-        
-        somaGeral += numeros[i];
-        
+        media[i] = soma / j;
+        soma = 0;
+        fflush(stdin);
     }
-    
-    mediaPar = somaPar / pares;
 
-    mediaGeral = somaGeral / 5;
-    
+    fflush(stdin);
+
     system("cls || clear");
 
-    //exibindo
+    printf(" \n Exibindo Dados \n");
 
-
-    for ( i = 0; i < 5; i++)
+    for (i = 0; i < 5; i++)
     {
-        printf("\n%dº Número: %d\n\n" ,i+1 ,numeros[i]);
+        printf (">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+
+        printf("Nome do Aluno: %s \n", nome[i]);
+
+        printf ("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< \n");
+
+        printf("Idade: %d \n", idade[i]);
+
+        for (j = 0; j < 3; j++)
+        {
+            printf("Nota: %.1f \n", nota[i][j]);
+        }
+
+        printf("Media: %.1f \n", media[i]);
+
+        if (media[i] >= 7)
+        {
+            printf("\n Aprovado \n");
+        }
+        else if (media[i] >= 5)
+        {
+            printf(" \n Recuperacao \n");
+        }
+        else
+        {
+            printf(" \nReprovado \n");
+        }
     }
-    
-    printf("Números Ímpares: %d \n" ,impares);
-    printf("Números Negativos: %d \n" ,negativos);
-    printf("Maior Número: %d \n" ,maior);
-    printf("Menor Número: %d \n" ,menor);
-    printf("Média de Números Pares: %.1f \n" ,mediaPar);
-    printf("Média dos Números: %.1f \n" ,mediaGeral);
-
-
 
     return 0;
 }
