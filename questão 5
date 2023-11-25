@@ -8,7 +8,7 @@ int main()
     setlocale(LC_ALL, "portuguese");
 
     char produtos[99][200];
-    float valores[99];
+    float valores[99]{30 ,8 ,12};
     float totalGeral = 0;
     int quantidade[99];
     int codigo;
@@ -37,8 +37,6 @@ printf("---------------------\n");
             printf("Informe o nome do produto: ");
             gets(produtos[contador]);
 
-            printf("Digite o preço: ");
-            scanf("%f", &valores[contador]);
 
             printf("Digite a quantidade: ");
             scanf("%d", &quantidade[contador]);
@@ -48,15 +46,21 @@ printf("---------------------\n");
             break;
 
         case 2:
+        	
             printf("Total das Vendas: \n \n");
+            printf("\n--------------------------------- \n");
             for (i = 0; i < contador; i++)
             {
-                printf("Produto: %-20s | Preco: R$%-10.2f | Quantidade: %-5d | Total de vendas do produto: R$%.2f\n", produtos[i], valores[i], quantidade[i], quantidade[i] * valores[i]);
-
+                printf("Nome do Produto: %-20s \n",produtos[i]); 
+				printf("Preço: R$%-10.2f \n", valores[i]); 
+				printf("Quantidade de Produtos: %-5d \n" ,quantidade[i]);
+				printf("Total de vendas do produto: R$%.2f\n" , quantidade[i] * valores[i]);
+				printf("\n--------------------------------- \n");
+				
                 totalGeral += quantidade[i] * valores[i];
             }
 
-            printf("\nTotal geral de vendas: R$%.2f\n", totalGeral);
+            printf("\nValor Total de vendas: R$%.2f\n", totalGeral);
             break;
 
         default:
