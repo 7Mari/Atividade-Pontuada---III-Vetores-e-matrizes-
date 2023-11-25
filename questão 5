@@ -1,61 +1,83 @@
-#include <locale.h>
-#include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
 
 int main()
 {
     setlocale(LC_ALL, "portuguese");
 
+    int i;
+    char produto[200][200];
     int codigo;
-    int produto;
+    int contador = 0;
+    int valor;
+    int valorTotal = 0;
     int soma = 0;
-    int valor = 0;
 
     do
     {
         printf("--MENU-- \n\n");
         printf("Produtos: \n");
-        printf("(1) Creme = R$30,00\n", 1);
-        printf("(2) Sabonete = R$8,00\n", 2);
-        printf("(3) Escova = R$12,00\n", 3);
+        printf("Creme = R$30,00\n", 1);
+        printf("Sabonete = R$8,00\n", 2);
+        printf("Escova = R$12,00\n", 3);
         printf("--------------------------- \n");
         printf("(1) Adicionar uma venda\n");
         printf("(2) Sair do menu e exibir o total das vendas\n");
         printf("Digite um código: \n");
         scanf("%d", &codigo);
+
         switch (codigo)
         {
         case 1:
+
+            fflush(stdin);
+
             printf("Informe o produto desejado: \n");
-            scanf("%d", &produto);
+            gets(produto[contador]);
 
+            contador++;
 
-            if (produto == 1)
+            if (produto[i] == "Creme")
             {
-                produto = 30;
+                valor = 30;
+            } else if (produto[i] == "Sabonete"){
+                valor = 8;
+            } else if (produto[i] == "Escova"){
+                valor = 12;
+            } else {
+                printf("Produto inválido!");
             }
-            else if (produto == 2)
-            {
-                produto = 8;
-            }
-            else if (produto == 3)
-            {
-                produto = 12;
-            }
-            soma += produto;
+
+            soma += valor;
+
+            system("cls || clear");
 
             break;
-        
+
         case 2:
-            valor = soma;
-            printf("Valor Total das Vendas: R$ %d  \n" ,valor);
+            valorTotal = soma;
+
+            printf("Informações da compra: \n");
+            for (i = 0; i < contador; i++)
+            {
+            	
+                printf("-------------------------\n");
+                printf("Nome: %s \n", produto[i]);
+                printf("Valor do Produto: %d \n", valor);
+
+                printf(" \n");
+            }
+            printf("Quantidade Adionada: %d \n", contador);
+            printf("Valor Total das vendas: %d \n", valorTotal);
             break;
 
         default:
-            printf("Opção Inválida!");
+            printf("Opção Inválida! \n");
             break;
         }
+
     } while (codigo != 2);
 
     return 0;
