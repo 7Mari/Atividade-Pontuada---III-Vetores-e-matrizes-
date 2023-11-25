@@ -8,7 +8,7 @@ int main()
 	setlocale(LC_ALL, "portuguese");
 
 	int i;
-	int numero[200];
+	char numero[20];
 	char nome[200][200];
 	int codigo;
 	int contador = 0;
@@ -30,7 +30,7 @@ int main()
 		gets (nome[contador]);
 
 		printf("Digite seu Número: \n");
-		scanf("%d", &numero[contador]);
+		fgets(numero ,20, stdin);
 		contador++;
 
 		system("cls || clear");
@@ -44,7 +44,7 @@ int main()
 		{
 			printf ("-------------------------\n");
 			printf("Nome: %s \n", nome[i]);
-			printf ("Número de Telefone: %d \n", numero[i]);
+			printf ("Número de Telefone: %s \n", numero);
 			
 			printf (" \n");
 		}
